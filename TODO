@@ -1,1 +1,2 @@
  * Handle KeyboardInterrupts better.
+ * Create a real python module using an __init__.py file
