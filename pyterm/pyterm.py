@@ -97,5 +97,5 @@ class PyTerm:
   self.loop()
 
 if __name__ == "__main__":
- t = Terminal()
- t.main()
+ pt = PyTerm()
+ pt.main()
