@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# Filename: pyshell.py
+# Description: This is an example for the PyTerm library.
+# Author: Daniel Bugl
+# Copyright (c) 2012, Daniel Bugl
+
 from pyterm import PyTerm
 from subprocess import check_output
 
