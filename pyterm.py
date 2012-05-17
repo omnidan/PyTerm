@@ -6,7 +6,7 @@
 
 import curses
 
-class PyTerm:
+class PyTerm(object):
  def initEngine(self):
   curses.initscr()
   curses.noecho()
@@ -74,7 +74,9 @@ class PyTerm:
  def log(self, text, endl=True):
   if endl == True: text = str(text)+'\n'
   else: text = str(text)
-  self.__log.append(text)
+  # Crop text, as text longer than the screen causes curses to crash
+  # TODO: Would adding \n's instead of just cropping be better?
+  self.__log.append(text[:curses.COLS])
   if len(self.__log) >= curses.LINES-2:
    toomanylines = (curses.LINES-2) - len(self.__log) + 1
    self.__log = self.__log[toomanylines:]
