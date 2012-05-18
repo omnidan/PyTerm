@@ -71,7 +71,7 @@ class PyTerm(object):
    self.stdwin.addstr(str(l))
   self.stdwin.refresh()
  
- def log(self, text, endl=True):
+ def __rawlog(self, text, endl=True):
   if endl == True: text = str(text)+'\n'
   else: text = str(text)
   # Crop text, as text longer than the screen causes curses to crash
@@ -81,6 +81,11 @@ class PyTerm(object):
    toomanylines = (curses.LINES-2) - len(self.__log) + 1
    self.__log = self.__log[toomanylines:]
   self.fillStdWin()
+ 
+ def log(self, text, endl=True):
+  texts = text.split('\n')
+  for t in reversed(texts):
+   self.__rawlog(t, endl)
  
  def loop(self):
   self.clearCmd()
